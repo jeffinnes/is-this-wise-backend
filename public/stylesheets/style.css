@@ -11,7 +11,113 @@ html {
   font-size: 10px;
 }
 
+h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: "GeosansLight-NMS", sans-serif;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: "GeosansLight-NMS", sans-serif;
+}
+
+h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-family: "GeosansLight-NMS", sans-serif;
+}
+
 body {
   background-color: rgb( 2, 60, 104);
   font-family: 'Raleway', sans-serif;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 4.5rem auto;
+}
+
+header,
+nav {
+  grid-column: span 6;
+  height: 4.5rem;
+  background-color: rgba(45, 52, 54, 1.0);
+  font-family: "GeosansLight-NMS", sans-serif;
+  font-size: 2.5rem;
+  color: rgba(234, 246, 229, 1.0);
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  justify-content: flex-end;
+}
+
+header div.breadcrumb {
+  padding: 0 0 0 1rem;
+}
+
+a.nav-link {
+  color: rgba(234, 246, 229, 1);
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 500ms ease-in-out, color 300ms ease-in-out;
+}
+
+a.nav-link:hover {
+  color: rgb(45, 52, 54);
+  background-color: rgb(80, 163, 227);
+}
+
+main.content-box {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  color: rgba(234, 246, 229, 1);
+  padding: 2rem 0;
+}
+
+
+
+/* Responsive Rules */
+
+@media screen and (max-width: 1200px) {
+  
+}
+
+@media screen and (max-width: 950px) {
+
+}
+
+@media screen and (max-width: 750px) {
+  header {
+    grid-column: span 4;
+  }
+  
+  nav {
+    grid-column: span 8;
+    justify-content: space-around;
+  }
+
+  a.nav-link {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  input {
+    font-size: 2rem
+  };
+
+  div.breadcrumb span#page-title {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  
 }
