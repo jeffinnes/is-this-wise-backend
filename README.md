@@ -6,4 +6,3 @@ _Is this wise?_ is an attempt to crowdsource the answer to that question.
 
 ## Credits
 Advice provided by: [adviceslip.com](https://api.adviceslip.com/)
-a

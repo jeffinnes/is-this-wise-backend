@@ -1,6 +1,6 @@
 {
-  "name": "express-app-template",
-  "version": "0.0.0",
+  "name": "is-this-wise",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
