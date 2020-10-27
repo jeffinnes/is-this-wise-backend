@@ -4,7 +4,11 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Is this wise?' });
+  let context = {
+    title: 'Is this wise?',
+  };
+
+  res.render('index', context);
 });
 
 module.exports = router;
