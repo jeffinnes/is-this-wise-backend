@@ -1,4 +1,5 @@
 const express = require('express');
+const quickAdvice = require('../controllers/quickAdvice');
 
 const router = express.Router();
 
@@ -10,5 +11,7 @@ router.get('/', (req, res, next) => {
 
   res.render('index', context);
 });
+
+router.get('/quick-advice', quickAdvice.get_quick_advice);
 
 module.exports = router;
