@@ -14,7 +14,7 @@ router.get('/github',
 router.get('/github/callback',
   passport.authenticate('github', { failureRedirect: `${process.env.FRONTEND_URL_ROOT}/login` }),
   (req, res) => {
-    // Successful authentication, redirect home.
+    // Successful authentication, redirect to profile.
     res.redirect(`${process.env.FRONTEND_URL_ROOT}/profile`);
   });
 
