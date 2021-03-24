@@ -6,6 +6,7 @@ const logger = require('morgan');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 // As I understand it on 3/18/2021
 // This works just by including the require. We don't actually have to use the const.
