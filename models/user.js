@@ -9,6 +9,12 @@ const userSchema = new Schema({
   githubId: String,
   googleId: String,
   facebookId: String,
+  ratingHistory: [
+    {
+      adviceSlipID: String,
+      rating: String,
+    },
+  ],
 });
 
 const User = mongoose.model('user', userSchema);
