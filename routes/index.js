@@ -1,17 +1,15 @@
 const express = require('express');
-const quickAdvice = require('../controllers/quickAdvice');
 
 const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  let context = {
+  /* let context = {
     title: 'Is this wise?',
   };
 
-  res.render('index', context);
+  res.render('index', context); */
+  res.redirect(process.env.FRONTEND_URL_ROOT);
 });
-
-router.get('/quick-advice', quickAdvice.get_quick_advice);
 
 module.exports = router;
