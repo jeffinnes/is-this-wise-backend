@@ -22,11 +22,30 @@ passport.deserializeUser((id, done) => {
 });
 
 /** GitHub Passport configs */
-passport.use(new GitHubStrategy({
-  clientID: process.env.GITHUB_CLIENT_ID,
-  clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: `${process.env.BACKEND_URL_ROOT}/auth/github/callback`,
-},
-(accessToken, refreshToken, profile, done) => {
-  User.findOrCreate({ githubId: profile.id }, (err, user) => done(err, user));
-}));
+passport.use(new GitHubStrategy(
+  {
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: '/auth/github/callback',
+  },
+  (accessToken, refreshToken, profile, done) => {
+    // Callback method triggered upon signing in.
+    User.findOne({ githubId: profile.id }).then((currentUser) => {
+      if (currentUser) {
+        // already have this user
+        done(null, currentUser);
+      } else {
+        // if not, create user in our db
+        new User({
+          githubId: profile.id,
+          username: profile.username,
+          name: profile.displayName,
+        })
+          .save()
+          .then((newUser) => {
+            done(null, newUser);
+          });
+      }
+    });
+  },
+));
