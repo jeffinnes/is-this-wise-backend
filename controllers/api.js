@@ -2,7 +2,7 @@ const User = require('../models/user');
 const Advice = require('../models/advice');
 
 async function SubmitRating(req, res) {
-  // ToDo A user might have already rated this advice. Better check for it before pushing
+  // Record users rating to their history
   await User.updateOne(
     { _id: req.session.passport.user },
     {
@@ -15,6 +15,7 @@ async function SubmitRating(req, res) {
     },
   );
 
+  // Update the raitings Good/Bad totals
   if (req.body.submittedRating === 'good') {
     // Save the good rating or create a new advice document with first rating
     await Advice.findOneAndUpdate(
