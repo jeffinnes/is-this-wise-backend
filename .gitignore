@@ -105,3 +105,4 @@ dist
 
 # Project Specific
 .DS_Store
+*.crt
