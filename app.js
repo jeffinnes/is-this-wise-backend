@@ -39,10 +39,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // connect to mongoDB
-mongoose.connect(process.env.dbConnection,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => {
+mongoose.connect(process.env.dbConnection, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
     console.log('Connection to MongoDB established...');
+  })
+  .catch((error) => {
+    console.log(error);
   });
 
 const corsOption = {
