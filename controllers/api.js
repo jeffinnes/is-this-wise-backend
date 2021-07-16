@@ -71,6 +71,19 @@ async function SubmitRating(req, res) {
   res.status(204).send();
 }
 
+async function GetUserRatings(req, res) {
+  console.log('Request made for rating History');
+  User.findById(req.session.passport.user, 'ratingHistory')
+    .then((result) => {
+      console.log(result);
+      res.json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 module.exports = {
   SubmitRating,
+  GetUserRatings,
 };
