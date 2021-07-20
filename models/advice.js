@@ -10,6 +10,7 @@ const Schema = mongoose.Schema;
 
 const adviceEntrySchema = new Schema({
   adviceSlipID: String,
+  adviceText: String,
   timesRatedGood: Number,
   timesRatedBad: Number,
 });

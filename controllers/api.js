@@ -26,6 +26,7 @@ async function SubmitRating(req, res) {
         if (!result) {
           new Advice({
             adviceSlipID: req.body.adviceID,
+            adviceText: req.body.adviceText,
             timesRatedGood: 1,
             timesRatedBad: 0,
           })
@@ -51,6 +52,7 @@ async function SubmitRating(req, res) {
         if (!result) {
           new Advice({
             adviceSlipID: req.body.adviceID,
+            adviceText: req.body.adviceText,
             timesRatedGood: 0,
             timesRatedBad: 1,
           })
@@ -72,7 +74,6 @@ async function SubmitRating(req, res) {
 }
 
 async function GetUserRatings(req, res) {
-  console.log('Request made for rating History');
   User.findById(req.session.passport.user, 'ratingHistory')
     .then((result) => {
       console.log(result);
@@ -82,6 +83,8 @@ async function GetUserRatings(req, res) {
       console.log(error);
     });
 }
+
+// ToDo API endpoint to return advice text (Jira ITW-24)
 
 module.exports = {
   SubmitRating,
