@@ -84,12 +84,19 @@ async function GetUserRatings(req, res) {
     });
 }
 
-// ToDo API endpoint to return advice text (Jira ITW-24)
+async function GetAllRatings(reg, res) {
+  try {
+    const result = await Advice.find();
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// API endpoint to return advice text
 async function GetAdviceByID(req, res) {
   try {
-    console.log(req.params.adviceID);
     const result = await Advice.findOne({ adviceSlipID: req.params.adviceID });
-    console.log(result);
     res.json(result);
   } catch (error) {
     console.log(error);
@@ -100,4 +107,5 @@ module.exports = {
   SubmitRating,
   GetUserRatings,
   GetAdviceByID,
+  GetAllRatings,
 };

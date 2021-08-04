@@ -18,6 +18,7 @@ function ensureAuthenticated(req, res, next) {
 
 router.post('/submit-rating', ensureAuthenticated, apiController.SubmitRating);
 router.get('/user-ratings', ensureAuthenticated, apiController.GetUserRatings);
-// ToDo API endpoint to return advice text (Jira ITW-24)
 router.get('/advice-text/:adviceID', apiController.GetAdviceByID);
+router.get('/all-ratings', apiController.GetAllRatings);
+
 module.exports = router;
