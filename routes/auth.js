@@ -18,6 +18,16 @@ router.get('/check', (req, res) => {
   }
 });
 
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.json({
+    user: {
+      _id: null,
+      name: null,
+    },
+  });
+});
+
 router.get('/github',
   passport.authenticate('github', { scope: ['user:email', 'read:user'] }));
 
