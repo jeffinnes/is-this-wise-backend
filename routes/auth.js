@@ -3,15 +3,12 @@ const passport = require('passport');
 
 const router = express.Router();
 
-/* GET users listing. */
 router.get('/', (req, res, next) => {
   res.redirect(`${process.env.FRONTEND_URL_ROOT}/login`);
 });
 
 // To return the user data to the client
 router.get('/check', (req, res) => {
-  console.log(`user - ${req.user}`);
-  console.log(req.session.passport);
   if (req.user === undefined) {
     res.json({});
   } else {

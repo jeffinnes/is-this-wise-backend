@@ -31,8 +31,8 @@ async function SubmitRating(req, res) {
             timesRatedBad: 0,
           })
             .save()
-            .then((result) => {
-              console.log(result);
+            .then((saveResult) => {
+              console.log(saveResult);
             })
             .catch((error) => {
               console.log(error);
@@ -57,8 +57,8 @@ async function SubmitRating(req, res) {
             timesRatedBad: 1,
           })
             .save()
-            .then((result) => {
-              console.log(result);
+            .then((saveResult) => {
+              console.log(saveResult);
             })
             .catch((error) => {
               console.log(error);
