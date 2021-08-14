@@ -39,7 +39,6 @@ passport.use(new GitHubStrategy(
         // if not, create user in our db
         new User({
           githubId: profile.id,
-          username: profile.username,
           name: profile.displayName,
         })
           .save()
