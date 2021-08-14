@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/user');
 
@@ -66,6 +67,33 @@ passport.use(new GoogleStrategy(
         // if not, create user in our db
         new User({
           googleId: profile.id,
+          name: profile.displayName,
+        })
+          .save()
+          .then((newUser) => {
+            done(null, newUser);
+          });
+      }
+    });
+  },
+));
+
+passport.use(new FacebookStrategy(
+  {
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: '/auth/facebook/callback',
+  },
+  (accessToken, refreshToken, profile, done) => {
+    // Callback method triggered upon signing in.
+    User.findOne({ facebookId: profile.id }).then((currentUser) => {
+      if (currentUser) {
+        // already have this user
+        done(null, currentUser);
+      } else {
+        // if not, create user in our db
+        new User({
+          facebookId: profile.id,
           name: profile.displayName,
         })
           .save()
