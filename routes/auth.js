@@ -36,6 +36,14 @@ router.get('/github/callback',
   (req, res) => {
     // Successful authentication, redirect to profile.
     res.redirect(`${process.env.FRONTEND_URL_ROOT}/rate-advice`);
+router.get('/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+router.get('/google/callback',
+  passport.authenticate('google', { failureRedirect: `${process.env.FRONTEND_URL_ROOT}/login` }),
+  (req, res) => {
+    // Successful authentication, redirect to profile.
+    res.redirect(`${process.env.FRONTEND_URL_ROOT}/history`);
   });
 
 module.exports = router;

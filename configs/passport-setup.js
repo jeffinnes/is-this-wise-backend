@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/user');
 
 /** General Passport configs */
@@ -39,6 +40,33 @@ passport.use(new GitHubStrategy(
         new User({
           githubId: profile.id,
           username: profile.username,
+          name: profile.displayName,
+        })
+          .save()
+          .then((newUser) => {
+            done(null, newUser);
+          });
+      }
+    });
+  },
+));
+
+passport.use(new GoogleStrategy(
+  {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: '/auth/google/callback',
+  },
+  (accessToken, refreshToken, profile, done) => {
+    // Callback method triggered upon signing in.
+    User.findOne({ googleId: profile.id }).then((currentUser) => {
+      if (currentUser) {
+        // already have this user
+        done(null, currentUser);
+      } else {
+        // if not, create user in our db
+        new User({
+          googleId: profile.id,
           name: profile.displayName,
         })
           .save()
