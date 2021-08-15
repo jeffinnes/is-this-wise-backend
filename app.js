@@ -2,11 +2,12 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+const morgan = require('morgan');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const logger = require('./configs/winston-config');
 
 // As I understand it on 3/18/2021
 // This works just by including the require. We don't actually have to use the const.
@@ -23,7 +24,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
+app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
