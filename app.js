@@ -14,7 +14,6 @@ const logger = require('./configs/winston-config');
 const passportSetup = require('./configs/passport-setup');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const apiRouter = require('./routes/api');
 
@@ -42,10 +41,10 @@ app.use(passport.session());
 // connect to mongoDB
 mongoose.connect(process.env.dbConnection, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Connection to MongoDB established...');
+    logger.info('Connection to MongoDB established...');
   })
   .catch((error) => {
-    console.log(error);
+    logger.error(error);
   });
 
 const corsOption = {
@@ -56,7 +55,6 @@ const corsOption = {
 app.use(cors(corsOption));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/api/v1', apiRouter);
 

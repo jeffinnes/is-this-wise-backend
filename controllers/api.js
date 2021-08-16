@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Advice = require('../models/advice');
+const logger = require('../configs/winston-config');
 
 async function SubmitRating(req, res) {
   // Record users rating to their history
@@ -31,16 +32,16 @@ async function SubmitRating(req, res) {
             timesRatedBad: 0,
           })
             .save()
-            .then((saveResult) => {
-              console.log(saveResult);
+            .then(() => {
+              logger.info(`Saved rating for --> ${req.body.adviceID}`);
             })
             .catch((error) => {
-              console.log(error);
+              logger.error(error);
             });
         }
       })
       .catch((error) => {
-        console.log(error);
+        logger.error(error);
       });
   } else {
     // Save the bad rating or create a new advice document with first rating
@@ -57,16 +58,16 @@ async function SubmitRating(req, res) {
             timesRatedBad: 1,
           })
             .save()
-            .then((saveResult) => {
-              console.log(saveResult);
+            .then(() => {
+              logger.info(`Saved rating for --> ${req.body.adviceID}`);
             })
             .catch((error) => {
-              console.log(error);
+              logger.error(error);
             });
         }
       })
       .catch((error) => {
-        console.log(error);
+        logger.error(error);
       });
   }
 
@@ -76,11 +77,10 @@ async function SubmitRating(req, res) {
 async function GetUserRatings(req, res) {
   User.findById(req.session.passport.user, 'ratingHistory')
     .then((result) => {
-      console.log(result);
       res.json(result);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error);
     });
 }
 
@@ -89,7 +89,7 @@ async function GetAllRatings(reg, res) {
     const result = await Advice.find();
     res.json(result);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
   }
 }
 
@@ -99,7 +99,7 @@ async function GetAdviceByID(req, res) {
     const result = await Advice.findOne({ adviceSlipID: req.params.adviceID });
     res.json(result);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
   }
 }
 
