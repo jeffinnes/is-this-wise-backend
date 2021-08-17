@@ -10,7 +10,7 @@ font-family: 'Literata', serif;
 html {
   height: 100%;
   font-size: 10px;
-  background-image: url('./assets/background/HillsandMountains-sunset.png');
+  background-image: url('../img/background/HillsandMountains-sunset.png');
   background-size: cover;
   background-attachment: fixed;
 }
@@ -35,11 +35,11 @@ h3 {
 }
 
 body {
-  background-color: rgb( 2, 60, 104);
   font-family: 'Raleway', sans-serif;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 4.5rem auto;
+  height: 100%;
 }
 
 header,
@@ -58,7 +58,8 @@ nav {
   justify-content: flex-end;
 }
 
-a.nav-link {
+a.nav-link,
+div.nav-link {
   color: rgba(234, 246, 229, 1);
   height: 100%;
   width: 20%;
@@ -68,9 +69,10 @@ a.nav-link {
   transition: background-color 500ms ease-in-out, color 300ms ease-in-out;
 }
 
-a.nav-link:hover {
+a.nav-link:hover,
+div.nav-link:hover {
   color: rgb(45, 52, 54);
-  background-color: rgb(80, 163, 227);
+  background-color: rgb(255, 115, 91);
 }
 
 main.content-box {
