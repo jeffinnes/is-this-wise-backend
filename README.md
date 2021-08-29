@@ -1,8 +1,5 @@
-# Is this wise?
+# Is this wise backend?
 
-## About
-Human history has produced a plethora of wisdom nuggets, but how much of it is actually any good?
-_Is this wise?_ is an attempt to crowdsource the answer to that question.
+This is the backend for the "Is This Wise?" app.
 
-## Credits
-Advice provided by: [adviceslip.com](https://api.adviceslip.com/)
+See the Frontend here: https://github.com/jeffinnes/is-this-wise-frontend
