@@ -17,5 +17,8 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.post('/submit-rating', ensureAuthenticated, apiController.SubmitRating);
+router.get('/user-ratings', ensureAuthenticated, apiController.GetUserRatings);
+router.get('/advice-text/:adviceID', apiController.GetAdviceByID);
+router.get('/all-ratings', apiController.GetAllRatings);
 
 module.exports = router;

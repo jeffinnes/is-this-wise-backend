@@ -10,43 +10,46 @@ font-family: 'Literata', serif;
 html {
   height: 100%;
   font-size: 10px;
+  background-image: url('../img/background/HillsandMountains-sunset.png');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 h1 {
   font-size: 4rem;
   font-weight: bold;
-  font-family: "GeosansLight-NMS", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 h2 {
   font-size: 3rem;
   font-weight: bold;
-  font-family: "GeosansLight-NMS", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
-  font-family: "GeosansLight-NMS", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 body {
-  background-color: rgb( 2, 60, 104);
   font-family: 'Raleway', sans-serif;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 4.5rem auto;
+  height: 100%;
 }
 
 header,
 nav {
   grid-column: span 6;
   height: 4.5rem;
-  background-color: rgba(45, 52, 54, 1.0);
-  font-family: "GeosansLight-NMS", sans-serif;
-  font-size: 2.5rem;
-  color: rgba(234, 246, 229, 1.0);
+  background-color: rgba(45, 52, 54, 1);
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+  color: rgba(234, 246, 229, 1);
   display: flex;
   align-items: center;
 }
@@ -55,7 +58,8 @@ nav {
   justify-content: flex-end;
 }
 
-a.nav-link {
+a.nav-link,
+div.nav-link {
   color: rgba(234, 246, 229, 1);
   height: 100%;
   width: 20%;
@@ -65,9 +69,10 @@ a.nav-link {
   transition: background-color 500ms ease-in-out, color 300ms ease-in-out;
 }
 
-a.nav-link:hover {
+a.nav-link:hover,
+div.nav-link:hover {
   color: rgb(45, 52, 54);
-  background-color: rgb(80, 163, 227);
+  background-color: rgb(255, 115, 91);
 }
 
 main.content-box {
@@ -78,82 +83,15 @@ main.content-box {
   padding: 2rem 0;
 }
 
-
-/* Home page */
-
-div.intro-block {
-  grid-column: 3 / 10;
-  font-size: 1.6rem;
-  margin: 0 auto 3rem auto;
-}
-
-div.user-choice {
-  grid-column: 3 / 10;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-div.user-choice a {
-  border-top: 1px solid #00df7e;
-  background: #24db8c;
-  background: -webkit-gradient(linear, left top, left bottom, from(#00b667), to(#24db8c));
-  background: -webkit-linear-gradient(top, #00b667, #24db8c);
-  background: -moz-linear-gradient(top, #00b667, #24db8c);
-  background: -ms-linear-gradient(top, #00b667, #24db8c);
-  background: -o-linear-gradient(top, #00b667, #24db8c);
-  padding: 5px 10px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  box-shadow: rgba(0,0,0,1) 0 1px 0;
-  text-shadow: rgba(0,0,0,.4) 0 1px 0;
-  color: #453645;
-  font-size: 14px;
-  font-family: 'Literata', serif;
-  text-decoration: none;
-  vertical-align: middle;
-  font-size: 1.5rem;
-  width: 15rem;
-  height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-div.user-choice a:hover {
-  border-top-color: #00703f;
-  background: #00703f;
-  color: #ccc;
-}
-
-div.user-choice a:active {
-  border-top-color: #014727;
-  background: #014727;
-}
-
-div.user-choice a span {
-  text-align: center;
-}
-
-
-/* Quick advice rules */
-
-div.advice-container {
-  height: 20rem;
-  background-color: rgba(240, 248, 255, .4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column: 3 / 10;
-  font-size: 2.7rem;
-  text-align: center;
+div.error-card {
+  background-color: rgba(45, 52, 54, 1);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
-  margin-bottom: 1.5rem;
+  margin: 2rem;
+  color: rgb(255, 255, 255);
+  grid-column: 2 / 11;
 }
-
 
 /* Responsive Rules */
 
