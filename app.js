@@ -11,7 +11,7 @@ const logger = require('./configs/winston-config');
 
 // As I understand it on 3/18/2021
 // This works just by including the require. We don't actually have to use the const.
-const passportSetup = require('./configs/passport-setup');
+require('./configs/passport-setup');
 
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
