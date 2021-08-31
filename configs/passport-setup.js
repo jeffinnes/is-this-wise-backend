@@ -28,7 +28,7 @@ passport.use(new GitHubStrategy(
   {
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: '/auth/github/callback',
+    callbackURL: 'https://itw-be.innesapps.net/auth/github/callback',
   },
   (accessToken, refreshToken, profile, done) => {
     // Callback method triggered upon signing in.
