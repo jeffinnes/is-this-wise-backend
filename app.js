@@ -48,7 +48,7 @@ mongoose.connect(process.env.dbConnection, { useNewUrlParser: true, useUnifiedTo
   });
 
 const corsOption = {
-  origin: true,
+  origin: 'https://is-this-wise.innesapps.net',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
